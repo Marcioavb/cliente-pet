@@ -23,7 +23,6 @@ public class ClienteListResponse {
 	}
 
 	public ClienteListResponse(Cliente cliente) {
-		super();
 		this.idCliente = cliente.getIdCliente();
 		this.nomeCompleto = cliente.getNomeCompleto();
 		this.cpf = cliente.getCpf();
@@ -32,3 +31,4 @@ public class ClienteListResponse {
 	}
 
 }
+
