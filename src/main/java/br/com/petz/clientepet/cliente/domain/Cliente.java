@@ -9,11 +9,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.br.CPF;
+import org.springframework.beans.factory.annotation.Value;
 
 import br.com.petz.clientepet.cliente.application.api.ClienteRequest;
 import lombok.AccessLevel;
@@ -29,23 +31,23 @@ public class Cliente {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", updatable = false, unique = true, nullable = false)
 	private UUID idCliente;
-	@NotBlank
+	@NotNull
 	private String nomeCompleto;
-	@NotBlank
+	@NotNull
 	@Email
 	private String email;
-	@NotBlank
+	@NotNull
 	private String celular;
 	private String telefone;
 	private Sexo sexo;
-	@NotBlank
+	@NotNull
 	private LocalDate dataNascimento;
 	@CPF
 	private String cpf;
 	
 	@NotNull
 	private boolean aceitaTermos;
-
+	
 	private LocalDateTime datahoraDoCadastro;
 	private LocalDateTime dataHoraDaUltimaAlteracao;
 
