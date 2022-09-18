@@ -61,3 +61,4 @@ public class Cliente {
 		this.datahoraDoCadastro = LocalDateTime.now();
 	}
 }
+
