@@ -26,8 +26,10 @@ public class ClienteController implements ClienteApi {
 	public List<ClienteListResponse> getTodosCliente() {
 		log.info("[inicia] ClienteController - getTodosCliente");
 		log.info("[finaliza] ClienteController - getTodosCliente");
-		return null;
+		List<ClienteListResponse> clientes = clienteService.buscaTodosClientes();
+		return clientes;
 	}
 
 }
+
 
