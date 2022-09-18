@@ -29,14 +29,14 @@ public class Cliente {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id", updatable = false, unique = true, nullable = false)
+	@Column(columnDefinition = "uuid",name = "id", updatable = false, unique = true, nullable = false)
 	private UUID idCliente;
-	@NotNull
+	@NotBlank
 	private String nomeCompleto;
-	@NotNull
+	@NotBlank
 	@Email
 	private String email;
-	@NotNull
+	@NotBlank
 	private String celular;
 	private String telefone;
 	private Sexo sexo;
