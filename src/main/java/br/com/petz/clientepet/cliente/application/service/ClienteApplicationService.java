@@ -22,7 +22,9 @@ public class ClienteApplicationService implements ClienteService {
 		Cliente cliente = clienteRepository.salva(new Cliente(clienteRequest));
 		log.info("[finaliza] ClienteApplicastionService - criaCliente");
 
-		return ClienteResponse.builder().idCliente(cliente.getIdCliente().build);
+		return ClienteResponse.builder()
+				.idCliente(cliente.getIdCliente())
+						.build();
 	}
 
 }

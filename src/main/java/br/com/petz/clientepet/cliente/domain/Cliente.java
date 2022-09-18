@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.br.CPF;
 
@@ -18,7 +19,6 @@ import br.com.petz.clientepet.cliente.application.api.ClienteRequest;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
@@ -42,7 +42,8 @@ public class Cliente {
 	private LocalDate dataNascimento;
 	@CPF
 	private String cpf;
-	@NonNull
+	
+	@NotNull
 	private boolean aceitaTermos;
 
 	private LocalDateTime datahoraDoCadastro;
@@ -56,7 +57,7 @@ public class Cliente {
 		this.sexo = clienteRequest.getSexo();
 		this.dataNascimento = clienteRequest.getDataNascimento();
 		this.cpf = clienteRequest.getCpf();
-		this.aceitaTermos = clienteRequest.getaceitaTermos();
+		this.aceitaTermos = clienteRequest.getAceitaTermos();
 		this.datahoraDoCadastro = LocalDateTime.now();
 	}
 }

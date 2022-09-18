@@ -17,7 +17,6 @@ public class ClienteController implements ClienteApi {
 		log.info("[inicia] ClienteController - postCliente");
 		ClienteResponse clienteCriado = clienteService.criaCliente(clienteRequest);
 		log.info("[finaliza] ClienteController - postCliente");
-
 		return clienteCriado;
 	}
 
