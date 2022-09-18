@@ -30,7 +30,7 @@ public class ClienteRequest {
 	@NotNull
 	private boolean aceitaTermos;
 	public @NotNull boolean getAceitaTermos() {
-		return false;
+		return true;
 	}
 
 }
