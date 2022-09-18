@@ -29,5 +29,8 @@ public class ClienteRequest {
 	private String cpf;
 	@NonNull
 	private boolean aceitaTermos;
+	public @NonNull boolean getaceitaTermos() {
+		return true;
+	}
 
 }
