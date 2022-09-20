@@ -29,7 +29,7 @@ public class Cliente {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(columnDefinition = "uuid",name = "id", updatable = false, unique = true, nullable = false)
+	@Column(columnDefinition = "uuid", name = "id", updatable = false, unique = true, nullable = false)
 	private UUID idCliente;
 	@NotBlank
 	private String nomeCompleto;
@@ -44,15 +44,15 @@ public class Cliente {
 	private LocalDate dataNascimento;
 	@CPF
 	private String cpf;
-	
+
 	@NotNull
-	private boolean aceitaTermos;
-	
+	private Boolean aceitaTermos;
+
 	private LocalDateTime datahoraDoCadastro;
 	private LocalDateTime dataHoraDaUltimaAlteracao;
 
 	public Cliente(ClienteRequest clienteRequest) {
-		this.nomeCompleto =  clienteRequest.getNomeCompleto();
+		this.nomeCompleto = clienteRequest.getNomeCompleto();
 		this.email = clienteRequest.getEmail();
 		this.celular = clienteRequest.getCelular();
 		this.telefone = clienteRequest.getTelefone();
@@ -61,6 +61,11 @@ public class Cliente {
 		this.cpf = clienteRequest.getCpf();
 		this.aceitaTermos = clienteRequest.getAceitaTermos();
 		this.datahoraDoCadastro = LocalDateTime.now();
-	}
-}
 
+	}
+
+	public Boolean getaceitaTermos() {
+		return null;
+	}
+
+}
