@@ -1,6 +1,5 @@
 package br.com.petz.clientepet.cliente.application.api;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
