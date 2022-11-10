@@ -18,7 +18,6 @@ public class RestResponseEntityExceptionHandler {
 	@ExceptionHandler(APIException.class)
 	public ResponseEntity<ErrorApiResponse> handlerGenericException1(APIException ex){
 		return ex.buildErrorResponseEntity();
-		
 	}
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<ErrorApiResponse> handlerGenericException(Exception ex){
@@ -28,7 +27,6 @@ public class RestResponseEntityExceptionHandler {
 						.message("POR FAVOR INFORME AO ADMINISTRADOR DO SISTEMA!").build());
 	}
 	
-
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex){
@@ -39,11 +37,7 @@ public class RestResponseEntityExceptionHandler {
 			errors.put(fieldName, errorMessage);
 		});
 		return errors;
-		
 	}
-	
-	
-	
 }
 
 

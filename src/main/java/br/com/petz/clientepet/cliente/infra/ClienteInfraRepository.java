@@ -21,10 +21,8 @@ public class ClienteInfraRepository implements ClienteRepository {
 		log.info("[inicia] ClienteInfraRepository - salva ");
 		clienteSpringDataJPARepository.save(cliente);
 		log.info("[finaliza] ClienteInfraRepository - salva ");
-
 		return cliente;
 	}
-
 	@Override
 	public List<Cliente> buscaTodosclientes() {
 		log.info("[inicia] ClienteInfraRepository - buscaTodosclientes ");
@@ -32,7 +30,6 @@ public class ClienteInfraRepository implements ClienteRepository {
 		log.info("[finaliza] ClienteInfraRepository - buscaTodosclientes ");
 		return todosClientes;
 	}
-
 	@Override
 	public Cliente buscaClienteAtravezId(UUID idCliente) {
 		log.info("[inicia] ClienteInfraRepository - buscaClienteAtravezId ");
@@ -41,5 +38,4 @@ public class ClienteInfraRepository implements ClienteRepository {
 		log.info("[finaliza] ClienteInfraRepository - buscaClienteAtravezId ");
 		return cliente;
 	}
-
 }

@@ -22,7 +22,6 @@ public class ClienteController implements ClienteApi {
 		log.info("[finaliza] ClienteController - postCliente");
 		return clienteCriado;
 	}
-
 	@Override
 	public List<ClienteListResponse> getTodosCliente() {
 		log.info("[inicia] ClienteController - getTodosCliente");
@@ -30,7 +29,6 @@ public class ClienteController implements ClienteApi {
 		log.info("[finaliza] ClienteController - getTodosCliente");
 		return clientes;
 	}
-
 	@Override
 	public ClienteDetalhadoResponse getClienteAtravesId(UUID idCliente) {
 		log.info("[inicia] ClienteController - getClienteAtravesId");
@@ -39,5 +37,4 @@ public class ClienteController implements ClienteApi {
 		log.info("[finaliza] ClienteController - getClienteAtravesId");
 		return clienteDetalhado ;
 	}
-
 }

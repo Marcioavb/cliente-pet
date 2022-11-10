@@ -2,7 +2,9 @@ package br.com.petz.clientepet.cliente.application.api;
 
 import java.util.List;
 import java.util.UUID;
+
 import javax.validation.Valid;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,5 +29,6 @@ public interface ClienteApi {
 	@GetMapping(value = "/{idCliente}")
 	@ResponseStatus(code = HttpStatus.OK)
 	ClienteDetalhadoResponse getClienteAtravesId(@PathVariable UUID idCliente);
-
+	
+	
 }

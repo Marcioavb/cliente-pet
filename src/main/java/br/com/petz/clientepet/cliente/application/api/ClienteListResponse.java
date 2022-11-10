@@ -21,7 +21,6 @@ public class ClienteListResponse {
 				.map(ClienteListResponse :: new)
 				.collect(Collectors.toList());
 	}
-
 	public ClienteListResponse(Cliente cliente) {
 		this.idCliente = cliente.getIdCliente();
 		this.nomeCompleto = cliente.getNomeCompleto();
@@ -29,6 +28,5 @@ public class ClienteListResponse {
 		this.email = cliente.getEmail();
 		this.celular = cliente.getCelular();
 	}
-
 }
 

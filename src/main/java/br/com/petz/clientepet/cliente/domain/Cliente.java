@@ -61,11 +61,8 @@ public class Cliente {
 		this.cpf = clienteRequest.getCpf();
 		this.aceitaTermos = clienteRequest.getAceitaTermos();
 		this.datahoraDoCadastro = LocalDateTime.now();
-
 	}
-
 	public Boolean getaceitaTermos() {
 		return null;
 	}
-
 }

@@ -32,5 +32,4 @@ public class ClienteRequest {
 	public @NotNull boolean getAceitaTermos() {
 		return true;
 	}
-
 }

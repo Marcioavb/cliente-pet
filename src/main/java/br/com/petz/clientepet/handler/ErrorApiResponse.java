@@ -14,5 +14,4 @@ public class ErrorApiResponse {
 
 	@JsonInclude
 	private String description;
-
 }

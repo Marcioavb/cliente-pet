@@ -25,10 +25,8 @@ public class ClienteApplicationService implements ClienteService {
 		log.info("[inicia] ClienteApplicastionService - criaCliente");
 		Cliente cliente = clienteRepository.salva(new Cliente(clienteRequest));
 		log.info("[finaliza] ClienteApplicastionService - criaCliente");
-
 		return ClienteResponse.builder().idCliente(cliente.getIdCliente()).build();
 	}
-
 	@Override
 	public List<ClienteListResponse> buscaTodosClientes() {
 		log.info("[inicia] ClienteApplicastionService - buscaTodosClientes");
@@ -36,7 +34,6 @@ public class ClienteApplicationService implements ClienteService {
 		log.info("[finaliza] ClienteApplicastionService - buscaTodosClientes");
 		return ClienteListResponse.converte(clientes);
 	}
-
 	@Override
 	public ClienteDetalhadoResponse buscaClienteAtravezId(UUID idCliente) {
 		log.info("[inicia] ClienteApplicastionService - buscaClienteAtravezId");
@@ -44,6 +41,5 @@ public class ClienteApplicationService implements ClienteService {
 		log.info("[finaliza] ClienteApplicastionService - buscaClienteAtravezId");
 		return new ClienteDetalhadoResponse(cliente);
 	}
-
 }
 
