@@ -1,0 +1,105 @@
+[1mdiff --git a/src/main/java/br/com/petz/clientepet/cliente/application/api/ClienteController.java b/src/main/java/br/com/petz/clientepet/cliente/application/api/ClienteController.java[m
+[1mindex 4670db6..136595a 100644[m
+[1m--- a/src/main/java/br/com/petz/clientepet/cliente/application/api/ClienteController.java[m
+[1m+++ b/src/main/java/br/com/petz/clientepet/cliente/application/api/ClienteController.java[m
+[36m@@ -33,7 +33,7 @@[m [mpublic class ClienteController implements ClienteApi {[m
+ 	public ClienteDetalhadoResponse getClienteAtravesId(UUID idCliente) {[m
+ 		log.info("[inicia] ClienteController - getClienteAtravesId");[m
+ 		log.info("[idCliente] {}", idCliente);[m
+[31m-		ClienteDetalhadoResponse clienteDetalhado = clienteService.buscaClienteAtravezId(idCliente);[m
+[32m+[m		[32mClienteDetalhadoResponse clienteDetalhado = clienteService.buscaClienteAtravesId(idCliente);[m
+ 		log.info("[finaliza] ClienteController - getClienteAtravesId");[m
+ 		return clienteDetalhado ;[m
+ 	}[m
+[1mdiff --git a/src/main/java/br/com/petz/clientepet/cliente/application/repository/ClienteRepository.java b/src/main/java/br/com/petz/clientepet/cliente/application/repository/ClienteRepository.java[m
+[1mindex 1a5cd60..964e04c 100644[m
+[1m--- a/src/main/java/br/com/petz/clientepet/cliente/application/repository/ClienteRepository.java[m
+[1m+++ b/src/main/java/br/com/petz/clientepet/cliente/application/repository/ClienteRepository.java[m
+[36m@@ -8,6 +8,8 @@[m [mimport br.com.petz.clientepet.cliente.domain.Cliente;[m
+ public interface ClienteRepository {[m
+ 	Cliente salva(Cliente cliente);[m
+ 	List<Cliente> buscaTodosclientes();[m
+[31m-	Cliente buscaClienteAtravezId(UUID idCliente);[m
+[32m+[m	[32mCliente buscaClienteAtravesId(UUID idCliente);[m
+[32m+[m	[32mvoid deletaCliente(Cliente cliente);[m
+ }[m
+ [m
+[41m+[m
+[1mdiff --git a/src/main/java/br/com/petz/clientepet/cliente/application/service/ClienteApplicationService.java b/src/main/java/br/com/petz/clientepet/cliente/application/service/ClienteApplicationService.java[m
+[1mindex 7c41fd6..6e05188 100644[m
+[1m--- a/src/main/java/br/com/petz/clientepet/cliente/application/service/ClienteApplicationService.java[m
+[1m+++ b/src/main/java/br/com/petz/clientepet/cliente/application/service/ClienteApplicationService.java[m
+[36m@@ -35,17 +35,17 @@[m [mpublic class ClienteApplicationService implements ClienteService {[m
+ 		return ClienteListResponse.converte(clientes);[m
+ 	}[m
+ 	@Override[m
+[31m-	public ClienteDetalhadoResponse buscaClienteAtravezId(UUID idCliente) {[m
+[32m+[m	[32mpublic ClienteDetalhadoResponse buscaClienteAtravesId(UUID idCliente) {[m
+ 		log.info("[inicia] ClienteApplicastionService - buscaClienteAtravezId");[m
+[31m-		Cliente cliente = clienteRepository.buscaClienteAtravezId(idCliente);[m
+[32m+[m		[32mCliente cliente = clienteRepository.buscaClienteAtravesId(idCliente);[m
+ 		log.info("[finaliza] ClienteApplicastionService - buscaClienteAtravezId");[m
+ 		return new ClienteDetalhadoResponse(cliente);[m
+ 	}[m
+ 	@Override[m
+ 	public void deletaClienteAtravesId(UUID idCliente) {[m
+ 		log.info("[inicia] ClienteApplicastionService - deletaClienteAtravesId");[m
+[31m-		Cliente cliente = clienteRepository.buscaClienteAtravezId(idCliente);[m
+[31m-	//	clienteRepository.deletaCliente(idCliente);[m
+[32m+[m		[32mCliente cliente = clienteRepository.buscaClienteAtravesId(idCliente);[m
+[32m+[m		[32mclienteRepository.deletaCliente(cliente);[m
+ 		log.info("[finaliza] ClienteApplicastionService - deletaClienteAtravesId");[m
+ [m
+ 	}[m
+[1mdiff --git a/src/main/java/br/com/petz/clientepet/cliente/application/service/ClienteService.java b/src/main/java/br/com/petz/clientepet/cliente/application/service/ClienteService.java[m
+[1mindex a26b2a7..096dc10 100644[m
+[1m--- a/src/main/java/br/com/petz/clientepet/cliente/application/service/ClienteService.java[m
+[1m+++ b/src/main/java/br/com/petz/clientepet/cliente/application/service/ClienteService.java[m
+[36m@@ -11,7 +11,7 @@[m [mpublic interface ClienteService {[m
+ [m
+ 	ClienteResponse criaCliente(ClienteRequest clienteRequest);[m
+ 	List<ClienteListResponse> buscaTodosClientes();[m
+[31m-	ClienteDetalhadoResponse buscaClienteAtravezId(UUID idCliente);[m
+[32m+[m	[32mClienteDetalhadoResponse buscaClienteAtravesId(UUID idCliente);[m
+ 	void deletaClienteAtravesId(UUID idCliente);[m
+ }[m
+ [m
+[1mdiff --git a/src/main/java/br/com/petz/clientepet/cliente/infra/ClienteInfraRepository.java b/src/main/java/br/com/petz/clientepet/cliente/infra/ClienteInfraRepository.java[m
+[1mindex 8f4c19b..e5af0e8 100644[m
+[1m--- a/src/main/java/br/com/petz/clientepet/cliente/infra/ClienteInfraRepository.java[m
+[1m+++ b/src/main/java/br/com/petz/clientepet/cliente/infra/ClienteInfraRepository.java[m
+[36m@@ -23,6 +23,7 @@[m [mpublic class ClienteInfraRepository implements ClienteRepository {[m
+ 		log.info("[finaliza] ClienteInfraRepository - salva ");[m
+ 		return cliente;[m
+ 	}[m
+[32m+[m
+ 	@Override[m
+ 	public List<Cliente> buscaTodosclientes() {[m
+ 		log.info("[inicia] ClienteInfraRepository - buscaTodosclientes ");[m
+[36m@@ -30,12 +31,24 @@[m [mpublic class ClienteInfraRepository implements ClienteRepository {[m
+ 		log.info("[finaliza] ClienteInfraRepository - buscaTodosclientes ");[m
+ 		return todosClientes;[m
+ 	}[m
+[32m+[m
+ 	@Override[m
+[31m-	public Cliente buscaClienteAtravezId(UUID idCliente) {[m
+[31m-		log.info("[inicia] ClienteInfraRepository - buscaClienteAtravezId ");[m
+[32m+[m	[32mpublic Cliente buscaClienteAtravesId(UUID idCliente) {[m
+[32m+[m		[32mlog.info("[inicia] ClienteInfraRepository - buscaClienteAtravesId ");[m
+ 		Cliente cliente = clienteSpringDataJPARepository.findByIdCliente(idCliente)[m
+ 				.orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Cliente nao encontardo!"));[m
+ 		log.info("[finaliza] ClienteInfraRepository - buscaClienteAtravezId ");[m
+ 		return cliente;[m
+ 	}[m
+[32m+[m
+[32m+[m	[32m@Override[m
+[32m+[m	[32mpublic void deletaCliente(Cliente cliente) {[m
+[32m+[m		[32mlog.info("[inicia] ClienteInfraRepository - deletaCliente ");[m
+[32m+[m		[32mclienteSpringDataJPARepository.delete(cliente);[m
+[32m+[m		[32mlog.info("[finaliza] ClienteInfraRepository - deletaCliente ");[m
+[32m+[m
+[32m+[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m
+ }[m

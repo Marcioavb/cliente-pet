@@ -35,17 +35,17 @@ public class ClienteApplicationService implements ClienteService {
 		return ClienteListResponse.converte(clientes);
 	}
 	@Override
-	public ClienteDetalhadoResponse buscaClienteAtravezId(UUID idCliente) {
+	public ClienteDetalhadoResponse buscaClienteAtravesId(UUID idCliente) {
 		log.info("[inicia] ClienteApplicastionService - buscaClienteAtravezId");
-		Cliente cliente = clienteRepository.buscaClienteAtravezId(idCliente);
+		Cliente cliente = clienteRepository.buscaClienteAtravesId(idCliente);
 		log.info("[finaliza] ClienteApplicastionService - buscaClienteAtravezId");
 		return new ClienteDetalhadoResponse(cliente);
 	}
 	@Override
 	public void deletaClienteAtravesId(UUID idCliente) {
 		log.info("[inicia] ClienteApplicastionService - deletaClienteAtravesId");
-		Cliente cliente = clienteRepository.buscaClienteAtravezId(idCliente);
-	//	clienteRepository.deletaCliente(idCliente);
+		Cliente cliente = clienteRepository.buscaClienteAtravesId(idCliente);
+		clienteRepository.deletaCliente(cliente);
 		log.info("[finaliza] ClienteApplicastionService - deletaClienteAtravesId");
 
 	}
