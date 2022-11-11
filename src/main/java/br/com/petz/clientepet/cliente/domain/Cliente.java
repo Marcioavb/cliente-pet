@@ -18,6 +18,7 @@ import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.beans.factory.annotation.Value;
 
 import br.com.petz.clientepet.cliente.application.api.ClienteRequest;
+import br.com.petz.clientepet.cliente.application.api.ClientealteracaoRequest;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -66,5 +67,16 @@ public class Cliente {
 	}
 	public Boolean getaceitaTermos() {
 		return null;
+		
+	}
+	public void altera(ClientealteracaoRequest clienteRequest) {
+		this.nomeCompleto = clienteRequest.getNomeCompleto();
+		this.celular = clienteRequest.getCelular();
+		this.telefone = clienteRequest.getTelefone();
+		this.sexo = clienteRequest.getSexo();
+		this.dataNascimento = clienteRequest.getDataNascimento();
+		this.aceitaTermos = clienteRequest.getAceitaTermos();
+		this.dataHoraDaUltimaAlteracao = LocalDateTime.now();
+		
 	}
 }
