@@ -31,16 +31,19 @@ public class pet {
 	private String nomePet;
 	@Enumerated(EnumType.STRING)
 	private Porte porte;
+	@NotNull
 	@Enumerated(EnumType.STRING)
 	private TipoPet tipo;
 	private String microchip;
+	@NotBlank
 	private String raca;
 	@Enumerated(EnumType.STRING)
+	@NotNull
 	private sexoPet sexo;
 	private String pelagemCor;
-	private String rga;
 	@NotNull
 	private LocalDate dataNascimento;
+	private String rga;
 	private String peso ;
 
 	private LocalDateTime datahoraDoCadastro;
