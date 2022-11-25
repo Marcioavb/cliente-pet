@@ -1,5 +1,8 @@
 package br.com.petz.clientepet.pet.infra;
 
+import java.util.List;
+import java.util.UUID;
+
 import org.springframework.stereotype.Repository;
 
 import br.com.petz.clientepet.pet.application.repository.PetRepository;
@@ -19,5 +22,13 @@ public class PetInfraRepository implements PetRepository {
 		petSpringDataJPARepository.save(pet);
 		log.info("[finish] PetInfraRepository - salvaPet");
 		return pet;
+	}
+
+	@Override
+	public List<Pet> buscaPetsDoClienteComId(UUID idCliente) {
+		log.info("[start] PetInfraRepository - buscaPetsDoClienteComId");
+		var pets = petSpringDataJPARepository.findByIdClienteTutor(idCliente);
+		log.info("[finish] PetInfraRepository - buscaPetsDoClienteComId");
+		return pets;
 	}
 }
