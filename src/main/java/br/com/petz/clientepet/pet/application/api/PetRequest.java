@@ -2,8 +2,6 @@ package br.com.petz.clientepet.pet.application.api;
 
 import java.time.LocalDate;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
