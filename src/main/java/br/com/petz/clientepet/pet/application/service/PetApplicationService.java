@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.springframework.stereotype.Service;
 
 import br.com.petz.clientepet.cliente.application.service.ClienteService;
+import br.com.petz.clientepet.pet.application.api.PetClienteDetalhadoResponse;
 import br.com.petz.clientepet.pet.application.api.PetClienteListResponse;
 import br.com.petz.clientepet.pet.application.api.PetRequest;
 import br.com.petz.clientepet.pet.application.api.PetResponse;
@@ -39,5 +40,24 @@ public class PetApplicationService implements PetService {
 		List<Pet> petsDoCliente = petRepository.buscaPetsDoClienteComId(idCliente);
 		log.info("[finish] PetApplicationService - buscaPetsDoClienteComId");
 		return PetClienteListResponse.converte(petsDoCliente);
+	}
+
+	@Override
+	public PetClienteDetalhadoResponse buscaPetDoClienteComId(UUID idCliente, UUID idPet) {
+		log.info("[start] PetApplicationService - buscaPetDoClienteComId");
+		clienteService.buscaClienteAtravesId(idCliente);
+		Pet pet = petRepository.buscaPetPeloId(idPet);
+		log.info("[finish] PetApplicationService - buscaPetDoClienteComId");
+		return new PetClienteDetalhadoResponse(pet);
+	}
+
+	@Override
+	public void deletaPetDoClienteComId(UUID idCliente, UUID idPet) {
+		log.info("[start] PetApplicationService - deletaPetDoClienteComId");
+		clienteService.buscaClienteAtravesId(idCliente);
+		Pet pet = petRepository.buscaPetPeloId(idPet);
+		petRepository.deletaPet(pet);
+		log.info("[sinish] PetApplicationService - deletaPetDoClienteComId");
+
 	}
 }
