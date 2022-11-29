@@ -11,7 +11,7 @@ import br.com.petz.clientepet.pet.domain.sexoPet;
 import lombok.Value;
 
 @Value
-public class PetRequest {
+public class PetAlteracaoRequest {
 	@NotBlank
 	private String nomePet;
 	private Porte porte;
@@ -27,4 +27,5 @@ public class PetRequest {
 	private LocalDate dataNascimento;
 	private String rga;
 	private String peso ;
+
 }
