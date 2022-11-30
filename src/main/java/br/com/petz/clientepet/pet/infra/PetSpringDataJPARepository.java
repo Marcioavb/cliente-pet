@@ -9,5 +9,4 @@ import br.com.petz.clientepet.pet.domain.Pet;
 
 public interface PetSpringDataJPARepository extends JpaRepository<Pet, UUID> {
 	List<Pet> findByIdClienteTutor(UUID idClienteTutor);
-
 }

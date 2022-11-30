@@ -37,9 +37,8 @@ public class PetInfraRepository implements PetRepository {
 	@Override
 	public Pet buscaPetPeloId(UUID idPet) {
 		log.info("[start] PetInfraRepository - buscaPetPeloId");
-		var pet = petSpringDataJPARepository.findById(idPet)
-				.orElseThrow(()-> APIException.build(HttpStatus.NOT_FOUND, 
-						"pet nao encontrado para o idPet = " + idPet));
+		var pet = petSpringDataJPARepository.findById(idPet).orElseThrow(
+				() -> APIException.build(HttpStatus.NOT_FOUND, "pet nao encontrado para o idPet = " + idPet));
 		log.info("[finish] PetInfraRepository - buscaPetPeloId");
 		return pet;
 	}
@@ -51,10 +50,4 @@ public class PetInfraRepository implements PetRepository {
 		log.info("[finish] PetInfraRepository - deletaPet");
 	}
 
-	@Override
-	public void salvarPet(Pet pet) {
-		log.info("[start] PetInfraRepository - salvarPet");
-		petSpringDataJPARepository.save(pet);
-		log.info("[finish] PetInfraRepository - salvarPet");
-	}
 }
