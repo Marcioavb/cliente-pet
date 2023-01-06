@@ -18,3 +18,5 @@ public interface ClienteService {
 	void pachAlteraCliente(UUID idCliente, ClientealteracaoRequest clientealteracaoRequest);
 }
 
+
+
