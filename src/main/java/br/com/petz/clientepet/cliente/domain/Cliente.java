@@ -9,13 +9,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.br.CPF;
-import org.springframework.beans.factory.annotation.Value;
 
 import br.com.petz.clientepet.cliente.application.api.ClienteRequest;
 import br.com.petz.clientepet.cliente.application.api.ClientealteracaoRequest;

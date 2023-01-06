@@ -18,4 +18,3 @@ public interface PetService {
 	void deletaPetDoClienteComId(UUID idCliente, UUID idPet);
 	void alteraPetDoClienteComId(UUID idCliente, UUID idPet, PetAlteracaoRequest petRequest);
 }
-

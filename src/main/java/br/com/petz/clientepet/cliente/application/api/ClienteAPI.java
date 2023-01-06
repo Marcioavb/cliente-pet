@@ -42,3 +42,4 @@ public interface ClienteAPI {
 	void pachAlteraCliente(@PathVariable UUID idCliente,
 			@Valid @RequestBody ClientealteracaoRequest clientealteracaoRequest);
 }
+

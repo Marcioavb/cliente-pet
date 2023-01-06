@@ -47,7 +47,7 @@ public class ClienteController implements ClienteAPI {
 		log.info("[finaliza] ClienteController - deletaClienteAtravesId");
 	}
 	@Override
-	public void pachAlteraCliente(UUID idCliente, @Valid ClientealteracaoRequest clientealteracaoRequest) {
+	public void pachAlteraCliente(UUID idCliente, ClientealteracaoRequest clientealteracaoRequest) {
 		log.info("[inicia] ClienteController - pachAlteraCliente");
 		log.info("[idCliente] {}", idCliente);
 		clienteService.pachAlteraCliente(idCliente, clientealteracaoRequest);

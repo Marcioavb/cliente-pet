@@ -3,7 +3,6 @@ package br.com.petz.clientepet.cliente.application.api;
 import java.time.LocalDate;
 
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.br.CPF;
